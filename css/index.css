@@ -1681,7 +1681,7 @@ kbd {
 }
 .highlight figcaption span:first-child::before {
   margin: 0 0.6rem 0 0;
-  color: var(--color-gray-550);
+  color: #5e687b;
 }
 .highlight.markdown figcaption span:first-child::before {
   content: 'markdown';
@@ -1820,8 +1820,8 @@ kbd {
   border-radius: 0.25rem;
   width: 100%;
   line-height: 1.7;
-  color: var(--color-gray-850);
-  background-color: var(--color-gray-200);
+  color: #abb2bf;
+  background-color: #282c34;
 }
 .highlight pre,
 .highlight code {
@@ -1836,8 +1836,8 @@ kbd {
 .highlight figcaption {
   position: relative;
   width: 100%;
-  color: var(--color-gray-850);
-  background-color: var(--color-gray-200);
+  color: #abb2bf;
+  background-color: #282c34;
   zoom: 1;
   padding: 0.1rem 0;
 }
@@ -1852,7 +1852,7 @@ kbd {
 .highlight figcaption span:first-child {
   float: left;
   margin-left: 0.5rem;
-  color: var(--color-gray-850);
+  color: #abb2bf;
 }
 .highlight figcaption span.external-link {
   float: right;
@@ -1865,26 +1865,26 @@ kbd {
 .highlight figcaption.custom .custom-lang {
   float: left;
   margin: 0 0.6rem;
-  color: var(--color-gray-550);
+  color: #5e687b;
 }
 .highlight td.gutter {
-  border-right: 1px solid var(--color-gray-300);
+  border-right: 1px solid #3a404c;
   padding: 0.4rem 0.6rem;
   width: 2rem;
-  background-color: var(--color-gray-200);
+  background-color: #282c34;
   border-radius: 0.25rem;
 }
 .highlight td.gutter pre {
   text-align: right;
   white-space: nowrap;
-  color: var(--color-gray-550);
+  color: #5e687b;
   background-color: inherit;
 }
 .highlight td.code {
   padding: 0.5rem 0.6rem;
 }
 .highlight .marked {
-  background-color: var(--color-gray-260);
+  background-color: #333842;
 }
 .highlight .emphasis {
   font-style: italic;
@@ -1893,11 +1893,11 @@ kbd {
   font-weight: bold;
 }
 .highlight .comment {
-  color: #969896;
+  color: #5c6370;
 }
 .highlight .quote,
 .highlight .params {
-  color: var(--color-gray-850);
+  color: #abb2bf;
 }
 .highlight .selector-tag,
 .highlight .template-variable,
@@ -1906,7 +1906,7 @@ kbd {
 .highlight .regexp,
 .highlight .name,
 .highlight .tag {
-  color: #c82829;
+  color: #f45a5a;
 }
 .highlight .builtin-name,
 .highlight .literal,
@@ -1914,12 +1914,12 @@ kbd {
 .highlight .type,
 .highlight .meta,
 .highlight .link {
-  color: #ee8019;
+  color: #de812c;
 }
 .highlight .class .keyword:first-child + .title,
 .highlight .built_in,
 .highlight .attribute {
-  color: #eab700;
+  color: #eedc6e;
 }
 .highlight .class .keyword ~ .title,
 .highlight .string .template-variable,
@@ -1928,17 +1928,17 @@ kbd {
 .highlight .class,
 .highlight .subst,
 .highlight .regexp {
-  color: #4eb4b4;
+  color: #56b6c2;
 }
 .highlight .string,
 .highlight .symbol,
 .highlight .bullet,
 .highlight .addition {
-  color: #4dc14c;
+  color: #98c379;
 }
 .highlight .title,
 .highlight .section {
-  color: #2a75c8;
+  color: #4a98d8;
 }
 .highlight .meta-keyword,
 .highlight .doctag,
@@ -1949,11 +1949,11 @@ kbd {
 .highlight .function,
 .highlight .tag .attr,
 .highlight .keyword {
-  color: #be4dbc;
+  color: #be74d5;
 }
 .bash .meta,
 .rust .meta {
-  color: #969896;
+  color: #5c6370;
 }
 .c\+\+ .built_in,
 .cpp .built_in,
@@ -1964,21 +1964,21 @@ kbd {
 .scss .variable,
 .styl .variable,
 .stylus .variable {
-  color: var(--color-gray-850);
+  color: #abb2bf;
 }
 .html .meta,
 .xml .meta,
 .yaml .attr,
 .yml .attr {
-  color: #c82829;
+  color: #f45a5a;
 }
 .js .params,
 .javascript .params {
-  color: #ee8019;
+  color: #de812c;
 }
 .json .attr,
 .swift .type {
-  color: #eab700;
+  color: #eedc6e;
 }
 .variable .variable,
 .bash .variable,
@@ -1987,13 +1987,13 @@ kbd {
 .c\# .meta,
 .css .number,
 .diff .meta {
-  color: #4eb4b4;
+  color: #56b6c2;
 }
 .md .section,
 .markdown .section,
 .py .string .meta,
 .python .string .meta {
-  color: #4dc14c;
+  color: #98c379;
 }
 .bash .built_in,
 .css .built_in,
@@ -2003,26 +2003,20 @@ kbd {
 .shell .meta,
 .shell .keyword,
 .shell .built_in {
-  color: #2a75c8;
+  color: #4a98d8;
 }
 .ini .attr,
 .objectivec .meta,
 .yaml .type,
 .yml .type {
-  color: #be4dbc;
+  color: #be74d5;
 }
 .diff .addition {
   color: #292;
-  background-color: #f0fff4;
+  background-color: transparent;
 }
 .diff .deletion {
   color: #d44;
-  background-color: #ffeef0;
-}
-.nightmode .diff .addition {
-  background-color: transparent;
-}
-.nightmode .diff .deletion {
   background-color: transparent;
 }
 .ending {
@@ -2300,7 +2294,7 @@ kbd {
   cursor: pointer;
 }
 .copy-button i {
-  color: var(--color-gray-550);
+  color: #5e687b;
 }
 .sticky-top {
   position: absolute;
