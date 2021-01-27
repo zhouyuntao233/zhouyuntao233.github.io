@@ -1057,8 +1057,6 @@ kbd {
   text-align: center;
   color: #f5f6f7;
   background-color: #2d2e30;
-  z-index: 0;
-  background: url("https://cdn.jsdelivr.net/gh/zhouyuntao233/Picture_Bed/img/happy.jpg") no-repeat center/cover;
 }
 .footer a {
   color: #c20808;
