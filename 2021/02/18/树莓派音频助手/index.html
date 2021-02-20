@@ -46,63 +46,54 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.3.0"></he
 
         <h4 id="安装sox及其mp3库"   >
           <a href="#安装sox及其mp3库" class="heading-link"><i class="fas fa-link"></i></a>安装sox及其mp3库</h4>
-      <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get install sox libsox-fmt-mp3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install sox libsox-fmt-mp3</span><br></pre></td></tr></table></div></figure>
 <p>如果需要支持所有可用音频格式那么应该这样安装:</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get install libsox-fmt-all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libsox-fmt-all</span><br></pre></td></tr></table></div></figure>
 
         <h4 id="录音和播放"   >
           <a href="#录音和播放" class="heading-link"><i class="fas fa-link"></i></a>录音和播放</h4>
       <p>如果USB声卡已经设置为默认声卡，那么最简单的方法就是</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">rec test.mp3
-play test.mp3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rec test.mp3</span><br><span class="line">play test.mp3</span><br></pre></td></tr></table></div></figure>
 <p>也可以指定录音和播放设备：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sox -t alsa plughw:1,0 test.mp3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sox -t alsa plughw:1,0 test.mp3</span><br></pre></td></tr></table></div></figure>
 <p><code>plughw:1,0</code>是USB声卡设备编号，可以通过如下命令查看</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">arecord -l
-#或者
-aplay -l
-#或者
-cat &#x2F;proc&#x2F;asound&#x2F;cards<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">arecord -l</span><br><span class="line"><span class="meta">#</span><span class="bash">或者</span></span><br><span class="line">aplay -l</span><br><span class="line"><span class="meta">#</span><span class="bash">或者</span></span><br><span class="line">cat /proc/asound/cards</span><br></pre></td></tr></table></div></figure>
 <p>也可以通过如下python脚本获取</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyaudio
-p <span class="token operator">=</span> pyaudio<span class="token punctuation">.</span>PyAudio<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">for</span> ii <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>get_device_count<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-	<span class="token keyword">print</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>get_device_info_by_index<span class="token punctuation">(</span>ii<span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pyaudio</span><br><span class="line">p = pyaudio.PyAudio()</span><br><span class="line"><span class="keyword">for</span> ii <span class="keyword">in</span> <span class="built_in">range</span>(p.get_device_count()):</span><br><span class="line">	print(p.get_device_info_by_index(ii).get(<span class="string">&#x27;name&#x27;</span>))</span><br></pre></td></tr></table></div></figure>
 
         <h5 id="将编号为1的USB声卡设置为默认的方法-Pi-4B测试通过"   >
           <a href="#将编号为1的USB声卡设置为默认的方法-Pi-4B测试通过" class="heading-link"><i class="fas fa-link"></i></a>将编号为1的USB声卡设置为默认的方法(Pi 4B测试通过)</h5>
       <ul>
 <li>方法1<br>编辑<code>~/.asoundrc</code><br>输入以下内容</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">defaults.ctl.card 1
-defaults.pcm.card 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">defaults.ctl.card 1</span><br><span class="line">defaults.pcm.card 1</span><br></pre></td></tr></table></div></figure>
 <ul>
 <li>方法2<br>在user profile中加入</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">export AUDIODEV&#x3D;hw:1,0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export AUDIODEV=hw:1,0</span><br></pre></td></tr></table></div></figure>
 <blockquote>
 <p>Note:我没用这个方法sox也默认使用了USB声卡作为录音和回放设备,可能与我安装了pulseaudio有关。卸载pulseaudio之后就需要指定USB声卡了。</p>
 </blockquote>
 
         <h5 id="测试声卡-编号1-："   >
           <a href="#测试声卡-编号1-：" class="heading-link"><i class="fas fa-link"></i></a>测试声卡(编号1)：</h5>
-      <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">speaker-test -D plughw:1 -c2 -t wav<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">speaker-test -D plughw:1 -c2 -t wav</span><br></pre></td></tr></table></div></figure>
 
         <h5 id="录制固定长度的音频片段（如-30-分钟）并保存在指定文件中："   >
           <a href="#录制固定长度的音频片段（如-30-分钟）并保存在指定文件中：" class="heading-link"><i class="fas fa-link"></i></a>录制固定长度的音频片段（如 30 分钟）并保存在指定文件中：</h5>
-      <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sox -t alsa plughw:1 myrec.wav trim 0 00:30:00<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sox -t alsa plughw:1 myrec.wav trim 0 00:30:00</span><br></pre></td></tr></table></div></figure>
 
         <h5 id="持续录制很长时间的音频，保存在几个不同的文件中，每隔一小时保存一次："   >
           <a href="#持续录制很长时间的音频，保存在几个不同的文件中，每隔一小时保存一次：" class="heading-link"><i class="fas fa-link"></i></a>持续录制很长时间的音频，保存在几个不同的文件中，每隔一小时保存一次：</h5>
-      <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sox -t alsa plughw:1 myrec.wav trim 0 01:00:00 : newfile : restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sox -t alsa plughw:1 myrec.wav trim 0 01:00:00 : newfile : restart</span><br></pre></td></tr></table></div></figure>
 
         <h5 id="使用arecord指定设备-D-plughw-1-0-双声道录音-c-2-并指定长度-d-5-和采样率-r-44100"   >
           <a href="#使用arecord指定设备-D-plughw-1-0-双声道录音-c-2-并指定长度-d-5-和采样率-r-44100" class="heading-link"><i class="fas fa-link"></i></a>使用arecord指定设备(-D plughw:1,0)双声道录音(-c 2)并指定长度(-d 5)和采样率(-r 44100)</h5>
-      <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">arecord -D plughw:1,0 -d 5 -c 2 -r 44100 -f s16_LE helloworld.wav<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arecord -D plughw:1,0 -d 5 -c 2 -r 44100 -f s16_LE helloworld.wav</span><br></pre></td></tr></table></div></figure>
 <p>如果sox或者rec命令运行时遇到如下提示：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">rec WARN alsa: can&#39;t encode 0-bit Unknown or not applicable<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rec WARN alsa: can&#x27;t encode 0-bit Unknown or not applicable</span><br></pre></td></tr></table></div></figure>
 <p>可以运行如下命令解决:</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">export AUDIODRIVER&#x3D;alsa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export AUDIODRIVER=alsa</span><br></pre></td></tr></table></div></figure>
 
 
         <h3 id="语音唤醒"   >
@@ -117,17 +108,14 @@ defaults.pcm.card 1<span aria-hidden="true" class="line-numbers-rows"><span></sp
       <ul>
 <li>Install dependencies</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">virtualenv -p python2 venv&#x2F;snowboy
-source venv&#x2F;snowboy&#x2F;bin&#x2F;activate
-cd examples&#x2F;Python
-pip install -r requirements.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">virtualenv -p python2 venv/snowboy</span><br><span class="line">source venv/snowboy/bin/activate</span><br><span class="line">cd examples/Python</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></div></figure>
 <p>代码经过我的魔改后</p>
 <p><img src="https://cdn.jsdelivr.net/gh/zhouyuntao233/Picture_Bed/img/image-20210218215330306.png" alt="image-20210218215330306"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/zhouyuntao233/Picture_Bed/img/image-20210218215434563.png" alt="image-20210218215434563"></p>
 <ul>
 <li>Try the trained personal model</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python demo.py hotword.pmdl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python demo.py hotword.pmdl</span><br></pre></td></tr></table></div></figure>
 
 
 
