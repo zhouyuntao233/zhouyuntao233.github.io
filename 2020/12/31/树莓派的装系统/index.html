@@ -54,7 +54,14 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.3.0"></he
       <p>如果是树莓派官方系统的话，则添加以下两个文件</p>
 <p><strong>ssh</strong></p>
 <p><strong>wpa_supplicant.conf</strong></p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1</span><br><span class="line">country=CN</span><br><span class="line"> </span><br><span class="line">network=&#123;</span><br><span class="line">	ssid=&quot;1234567&quot;    #WiFi账号</span><br><span class="line">	psk=&quot;123456789&quot;   #WiFi密码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdev
+update_config&#x3D;1
+country&#x3D;CN
+ 
+network&#x3D;&#123;
+	ssid&#x3D;&quot;1234567&quot;    #WiFi账号
+	psk&#x3D;&quot;123456789&quot;   #WiFi密码
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -67,21 +74,24 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.3.0"></he
         <h3 id="3-修改时间"   >
           <a href="#3-修改时间" class="heading-link"><i class="fas fa-link"></i></a>3. 修改时间</h3>
       <p>可以先用date 命令查看时间<br>3.1 修改时区</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo tzselect</span><br><span class="line">sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></div></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo tzselect
+sudo cp &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai &#x2F;etc&#x2F;localtime<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>3.2 安装ntpdate</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ntpdate</span><br><span class="line">sudo ntpdate ntp.api.bz //同步时间</span><br></pre></td></tr></table></div></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt install ntpdate
+sudo ntpdate ntp.api.bz &#x2F;&#x2F;同步时间<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>一般来说时间同步就完成了，可能还需要安装</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ntp</span><br></pre></td></tr></table></div></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt install ntp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/190150063" >参照知乎某大佬的解决方案</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>.</p>
 
         <h3 id="4-修改国内源"   >
           <a href="#4-修改国内源" class="heading-link"><i class="fas fa-link"></i></a>4.修改国内源</h3>
       <p>ubuntu的源位于</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/apt/sources.list</span><br></pre></td></tr></table></div></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&#x2F;etc&#x2F;apt&#x2F;sources.list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>替换成清华源(也可以替换成中科大源，阿里云等但要注意是ubuntu-ports的源)</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i &quot;s/ports.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/n&quot; sources.list</span><br><span class="line">sudo sed -i &quot;s/http/https/n&quot; sources.lsit</span><br></pre></td></tr></table></div></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo sed -i &quot;s&#x2F;ports.ubuntu.com&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;n&quot; sources.list
+sudo sed -i &quot;s&#x2F;http&#x2F;https&#x2F;n&quot; sources.lsit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>更新完后</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></div></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
         <h3 id="5-raspberryPi的国内源"   >
           <a href="#5-raspberryPi的国内源" class="heading-link"><i class="fas fa-link"></i></a>5. raspberryPi的国内源</h3>
@@ -366,4 +376,4 @@ if (Array.isArray(assistSearchList)) {
       extSearch(name);
     }, false);
   });
-}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="/js/utils.js?v=2.6.1"></script><script src="/js/stun-boot.js?v=2.6.1"></script><script src="/js/scroll.js?v=2.6.1"></script><script src="/js/header.js?v=2.6.1"></script><script src="/js/sidebar.js?v=2.6.1"></script><script type="application/json" src="/search.json"></script></body></html>
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="/js/utils.js?v=2.6.1"></script><script src="/js/stun-boot.js?v=2.6.1"></script><script src="/js/scroll.js?v=2.6.1"></script><script src="/js/header.js?v=2.6.1"></script><script src="/js/sidebar.js?v=2.6.1"></script><script type="application/json" src="/search.json"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
