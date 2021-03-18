@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhouyuntao233/Picture_Bed/img/java-collection-hierarchy.png">
 <meta property="article:published_time" content="2021-03-10T03:38:53.000Z">
-<meta property="article:modified_time" content="2021-03-18T00:28:49.398Z">
+<meta property="article:modified_time" content="2021-03-18T01:36:24.454Z">
 <meta property="article:author" content="zhouyuntao">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -40,17 +40,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.3.0"></he
           <a href="#Java基础" class="heading-link"><i class="fas fa-link"></i></a>Java基础</h2>
       <a id="more"></a> 
 
-
-        <h3 id="为什么Java代码可以实现一次编写、到处运行？"   >
-          <a href="#为什么Java代码可以实现一次编写、到处运行？" class="heading-link"><i class="fas fa-link"></i></a>为什么Java代码可以实现一次编写、到处运行？</h3>
-      <p>JVM（Java虚拟机）是Java跨平台的关键。</p>
-<p>在程序运行前，Java源代码（.java）需要经过编译器编译成字节码（.class）。在程序运行时，JVM负责将字节码翻译成特定平台下的机器码并运行，也就是说，只要在不同的平台上安装对应的JVM，就可以运行字节码文件。</p>
-<p>同一份Java源代码在不同的平台上运行，它不需要做任何的改变，并且只需要编译一次。而编译好的字节码，是通过JVM这个中间的“桥梁”实现跨平台的，JVM是与平台相关的软件，它能将统一的字节码翻译成该平台的机器码。</p>
-
-        <h3 id="Java-访问权限"   >
-          <a href="#Java-访问权限" class="heading-link"><i class="fas fa-link"></i></a>Java 访问权限</h3>
-      <p>Java语言为我们提供了三种访问修饰符，即private、protected、public，在使用这些修饰符修饰目标时，一共可以形成四种访问权限，即private、defalut、protected、public，注意在不加任何修饰符时为default访问权限。</p>
-<p>在修饰成员变量/成员方法时，该成员的四种访问权限的含义如下：</p>
+        <h3 id="基础问题"   >
+          <a href="#基础问题" class="heading-link"><i class="fas fa-link"></i></a>基础问题</h3>
+      
+        <h4 id="Java-访问权限"   >
+          <a href="#Java-访问权限" class="heading-link"><i class="fas fa-link"></i></a>Java 访问权限</h4>
+      <p>Java语言为我们提供了三种访问修饰符，即private、protected、public，在使用这些修饰符修饰目标时，一共可以形成四种访问权限，即private、defalut、protected、public，注意在不加任何修饰符时为default访问权限。<br>在修饰成员变量/成员方法时，该成员的四种访问权限的含义如下：</p>
 <ul>
 <li>private：该成员可以被该类内部成员访问；</li>
 <li>defalut：该成员可以被该类内部成员访问，也可以被同一包下其他的类访问；</li>
@@ -63,8 +58,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.3.0"></he
 <li>public：该类可以被任意包下，任意的类所访问。</li>
 </ul>
 
-        <h3 id="Java-数据类型"   >
-          <a href="#Java-数据类型" class="heading-link"><i class="fas fa-link"></i></a>Java 数据类型</h3>
+        <h4 id="Java-数据类型"   >
+          <a href="#Java-数据类型" class="heading-link"><i class="fas fa-link"></i></a>Java 数据类型</h4>
       <p>Java数据类型包括基本数据类型和引用数据类型两大类。</p>
 <p>基本数据类型有8个，可以分为4个小类，分别是整数类型（byte/short/int/long）、浮点类型（float/double）、字符类型（char）、布尔类型（boolean）。其中，4个整数类型中，int类型最为常用。2个浮点类型中，double最为常用。另外，在这8个基本类型当中，除了布尔类型之外的其他7个类型，都可以看做是数字类型，它们相互之间可以进行类型转换。</p>
 <p>引用类型就是对一个对象的引用，根据引用对象类型的不同，可以将引用类型分为3类，即数组、类、接口类型。引用类型本质上就是通过指针，指向堆中对象所持有的内存空间，只是Java语言不再沿用指针这个说法而已。</p>
@@ -80,16 +75,10 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.3.0"></he
 <li><strong>char：2字节（16位），数据范围是 <code>\u0000 ~ \uffff</code></strong></li>
 <li><strong>boolean：Java规范没有明确的规定，不同的JVM有不同的实现机制。</strong></li>
 </ul>
-<p>对于引用数据类型，你需要了解JVM的内存分布情况，知道引用以及引用对象存放的位置，详见JVM部分的题目。</p>
 
-        <h4 id="int和Integer有什么区别，二者在做-运算时会得到什么结果"   >
-          <a href="#int和Integer有什么区别，二者在做-运算时会得到什么结果" class="heading-link"><i class="fas fa-link"></i></a>int和Integer有什么区别，二者在做==运算时会得到什么结果</h4>
-      <p>int是基本数据类型，Integer是int的包装类。二者在做==运算时，Integer会自动拆箱为int类型，然后再进行比较。届时，如果两个int值相等则返回true，否则就返回false。</p>
-
-        <h3 id="全局变量和局部变量的区别"   >
-          <a href="#全局变量和局部变量的区别" class="heading-link"><i class="fas fa-link"></i></a>全局变量和局部变量的区别</h3>
-      <p>Java中的变量分为成员变量和局部变量，它们的区别如下：</p>
-<p>成员变量：</p>
+        <h4 id="全局变量和局部变量的区别"   >
+          <a href="#全局变量和局部变量的区别" class="heading-link"><i class="fas fa-link"></i></a>全局变量和局部变量的区别</h4>
+      <p>Java中的变量分为成员变量和局部变量，它们的区别如下：<br>成员变量：</p>
 <ol>
 <li>成员变量是在类的范围里定义的变量；</li>
 <li>成员变量有默认初始值；</li>
@@ -102,19 +91,21 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.3.0"></he
 <li>局部变量没有默认初始值；</li>
 <li>局部变量存储于栈内存中，作用的范围结束，变量空间会自动的释放。</li>
 </ol>
-<p><strong>注意事项</strong></p>
-<p>Java中没有真正的全局变量，面试官应该是出于其他语言的习惯说全局变量的，他的本意应该是指成员变量。</p>
+
+        <h4 id="main方法中只能调用-static"   >
+          <a href="#main方法中只能调用-static" class="heading-link"><i class="fas fa-link"></i></a>main方法中只能调用 static</h4>
+      <p>用static修饰的方法，无须产生类的实例对象就可以调用该方法。<br>没有static修饰的方法，需要产生一个类的实例对象才可以调用该方法。<br>static变量是存储在静态存储区的，不需要实例化。<br>在main函数中调用函数只能调用静态的。如果要调用非静态的，那么必须要先实例化对象，然后通过对象来调用非静态方法**</p>
 
         <h3 id="Java-集合"   >
           <a href="#Java-集合" class="heading-link"><i class="fas fa-link"></i></a>Java 集合</h3>
       <p><img src="https://cdn.jsdelivr.net/gh/zhouyuntao233/Picture_Bed/img/java-collection-hierarchy.png" alt="img"></p>
 </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://zhouyuntao233.github.io">zhouyuntao</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://zhouyuntao233.github.io/2021/03/10/Java%E5%9F%BA%E7%A1%80/">https://zhouyuntao233.github.io/2021/03/10/Java%E5%9F%BA%E7%A1%80/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://zhouyuntao233.github.io/tags/Java/">Java</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/03/10/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Java多线程</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/03/09/myBatis%E9%85%8D%E7%BD%AE/"><span class="paginator-prev__text">myBatis配置</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">
-          Java基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88Java%E4%BB%A3%E7%A0%81%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%BC%96%E5%86%99%E3%80%81%E5%88%B0%E5%A4%84%E8%BF%90%E8%A1%8C%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">
-          为什么Java代码可以实现一次编写、到处运行？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90"><span class="toc-number">1.2.</span> <span class="toc-text">
-          Java 访问权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.</span> <span class="toc-text">
-          Java 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#int%E5%92%8CInteger%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%BA%8C%E8%80%85%E5%9C%A8%E5%81%9A-%E8%BF%90%E7%AE%97%E6%97%B6%E4%BC%9A%E5%BE%97%E5%88%B0%E4%BB%80%E4%B9%88%E7%BB%93%E6%9E%9C"><span class="toc-number">1.3.1.</span> <span class="toc-text">
-          int和Integer有什么区别，二者在做&#x3D;&#x3D;运算时会得到什么结果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text">
-          全局变量和局部变量的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-%E9%9B%86%E5%90%88"><span class="toc-number">1.5.</span> <span class="toc-text">
+          Java基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">
+          基础问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90"><span class="toc-number">1.1.1.</span> <span class="toc-text">
+          Java 访问权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">
+          Java 数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.3.</span> <span class="toc-text">
+          全局变量和局部变量的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#main%E6%96%B9%E6%B3%95%E4%B8%AD%E5%8F%AA%E8%83%BD%E8%B0%83%E7%94%A8-static"><span class="toc-number">1.1.4.</span> <span class="toc-text">
+          main方法中只能调用 static</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-%E9%9B%86%E5%90%88"><span class="toc-number">1.2.</span> <span class="toc-text">
           Java 集合</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://cdn.jsdelivr.net/gh/zhouyuntao233/Picture_Bed/img/touxiang.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">热爱生活💤</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/zhouyuntao233/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/zhou-yun-tao-16/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a></div><div class="sidebar-ov-feed"></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">16</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">13</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>zhouyuntao</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.3.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.1</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">访问人数</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">浏览总量</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
   var isXML = true;
   var search_path = 'search.json';
